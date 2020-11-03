@@ -1,0 +1,4 @@
+#Key and value types
+#Sun Nov 01 21:48:40 CET 2020
+valueType=com.example.pokedex_demo.entities.Pokemon
+keyType=java.lang.String
