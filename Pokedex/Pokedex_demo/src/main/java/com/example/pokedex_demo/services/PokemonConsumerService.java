@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 @ConfigurationProperties(value = "example.pokemon", ignoreUnknownFields = false)
 public class PokemonConsumerService {
@@ -26,40 +28,52 @@ public class PokemonConsumerService {
     }
 
 
-    public PokemonDto search(String name) {
-
-
+    public PokemonDto searchByName(String name) {
         var urlWithNameQuery = url + "pokemon/" + name;
 
-        var test2 =  "https://192.168.0.3/api/v1/pokemon/mew";
-        var test = "https://pokeapi.co/api/v2/pokemon/ditto";
-        System.out.println("IS SEARCHING");
-        System.out.println(urlWithNameQuery);
         var pokemon = restTemplate.getForObject(urlWithNameQuery, PokemonDto.class);
 
         if (pokemon == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No pokemon found!");
         }
-
-        /*
-        if (pokemon != null) {
-            System.out.println("Pokemon: " + pokemon.getName());
-        } else {
-            System.out.println("No pokemon found!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No pokemon found!");
-        }
-        */
-        pokemon.setTest("Updated");
+        //pokemon.setTest("Updated");
         return pokemon;
     }
 
 
-    // C.R.U.D.
+    /*public PokemonDto searchByHeight(int height) {
+        var urlWithHeightQuery = url + "pokemon/" + height;
+    }*/
+
+
+    public List<PokemonDto> getOriginalPokemonFromAPi() {
+        var urlWithOriginalQuery = url + "?limit=151&offset=0";
+        var orignalPokemon = restTemplate.getForObject(urlWithOriginalQuery, PokemonDto.class);
+
+        if (orignalPokemon == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No pokemon found!");
+        }
+
+        return List.of(orignalPokemon);
+        //orignalPokemon.getResult().forEach(pokemon -> PokeApiHarvestDto.save(new PokeApiHarvest(pokemon.getName(), pokemon.getType(), pokemon.getHeight()
+       // ,pokemon.getWeight(), pokemon.getNdex())));
+    }
+
+
+
+    // DELTE?
     void some() {
         restTemplate.put(url, new PokemonDto()); // spara?
         restTemplate.postForEntity(url, new PokemonDto(), PokemonDto.class); // updatera??
         restTemplate.delete(url);
     }
+
+
+
+
+
+
+
 
     /*@Autowired
     private PokemonRepository pokemonRepository;

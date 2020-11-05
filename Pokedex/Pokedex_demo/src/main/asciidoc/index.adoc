@@ -1,0 +1,125 @@
+= Pokedex REST Application
+Henrik Jangefelt Nilsson;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+
+Sample application Demonstrating how to use Spring REST.
+
+
+=== GET POKEMON(s)
+
+===== One showing how to make a request using cURL:
+include::{snippets}/v1/pokemon-get-all/curl-request.adoc[]
+
+===== One showing the HTTP request:
+include::{snippets}/v1/pokemon-get-all/http-request.adoc[]
+
+===== One showing the request (query) parameters:
+include::{snippets}/v1/pokemon-get-all/request-parameters.adoc[]
+
+===== And one showing the HTTP response:
+include::{snippets}/v1/pokemon-get-all/http-response.adoc[]
+
+===== Response Body:
+include::{snippets}/v1/pokemon-get-all/response-body.adoc[]
+
+
+
+
+=== GET POKEMON
+
+===== One showing how to make a request using cURL:
+include::{snippets}/v1/pokemon-get-one/curl-request.adoc[]
+
+===== One showing the HTTP request:
+include::{snippets}/v1/pokemon-get-one/http-request.adoc[]
+
+===== And one showing the HTTP response:
+include::{snippets}/v1/pokemon-get-one/http-response.adoc[]
+
+===== Response Body:
+include::{snippets}/v1/pokemon-get-one/response-body.adoc[]
+
+===== Response Fields:
+include::{snippets}/v1/pokemon-get-one/response-fields.adoc[]
+
+
+
+
+=== SAVE POKEMON
+
+===== One showing how to make a request using cURL:
+include::{snippets}/v1/pokemon-new/curl-request.adoc[]
+
+===== One showing the HTTP request:
+include::{snippets}/v1/pokemon-new/http-request.adoc[]
+
+===== And one showing the HTTP response:
+include::{snippets}/v1/pokemon-new/http-response.adoc[]
+
+===== Response Body:
+include::{snippets}/v1/pokemon-new/response-body.adoc[]
+
+===== Response Fields:
+include::{snippets}/v1/pokemon-new/response-fields.adoc[]
+
+===== Request Fields
+include::{snippets}/v1/pokemon-new/request-fields.adoc[]
+
+
+
+
+=== UPDATE POKEMON
+
+===== One showing how to make a request using cURL:
+include::{snippets}/v1/pokemon-update/curl-request.adoc[]
+
+===== One showing the HTTP request:
+include::{snippets}/v1/pokemon-update/http-request.adoc[]
+
+===== And one showing the HTTP response:
+include::{snippets}/v1/pokemon-update/http-response.adoc[]
+
+===== Request Fields
+include::{snippets}/v1/pokemon-update/request-fields.adoc[]
+
+
+
+
+
+=== DELETE POKEMON
+
+===== One showing how to make a request using cURL:
+include::{snippets}/v1/pokemon-delete/curl-request.adoc[]
+
+===== One showing the HTTP request:
+include::{snippets}/v1/pokemon-delete/http-request.adoc[]
+
+===== And one showing the HTTP response:
+include::{snippets}/v1/pokemon-delete/http-response.adoc[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

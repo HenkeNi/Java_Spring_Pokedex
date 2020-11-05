@@ -31,12 +31,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+        /*httpSecurity
+                .csrf().disable()
+                .authorizeRequests().anyRequest().authenticated()
+                .and().httpBasic()
+                .and().logout();*/
+
         httpSecurity
                 .csrf().disable()
                 .formLogin().disable()
                 .authorizeRequests()
-                .antMatchers("/open").permitAll() // ÖPPEN FÖR ALMENHETEN
-                .antMatchers("/api/**").authenticated()
+                //.antMatchers("/api/v1/pokemon").permitAll() // ÖPPEN FÖR ALMENHETEN
+                .antMatchers("/api/v1/pokemon/**").permitAll()
+                //.antMatchers("/api/v1/**").authenticated()
+                //.antMatchers("/api/**").authenticated()
                // .antMatchers("/api/**").hasRole("ROLE_ADMIN").authenticated() // KRÄVER AUTENCIERING
                 //.authorizeRequests().anyRequest().authenticated()
                 .and()
@@ -52,14 +61,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-
-    /*@Autowired
+    // TODO: HA UT KOMMENTERAD??
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authentication) throws Exception {
         authentication.inMemoryAuthentication()
                 .withUser("Admin")
                 .password(passwordEncoder().encode("supersecret"))
                 .roles("USER");
-    }*/
+    }
 
 
 

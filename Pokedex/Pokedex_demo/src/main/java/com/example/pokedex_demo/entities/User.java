@@ -3,8 +3,12 @@ package com.example.pokedex_demo.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,11 +16,20 @@ public class User {
 
     @Id
     private String id;
+
+    @NotNull
     private String name;
+
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd", shape=JsonFormat.Shape.STRING)
     private LocalDate birthdate;
+
+    @NotEmpty
     private String username;
+
+    @NotEmpty @Size(min = 8, max = 24)
     private String password;
+
     private List<String> roles;
 
     public User() {

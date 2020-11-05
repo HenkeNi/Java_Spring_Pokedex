@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
@@ -19,16 +18,16 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     // CREATES users every time program is run...
     // When users has been created; this method will run
     // PostConstruct is lika a constructor with all Spring related
     // injections finished, like @Autowired etc
-    @PostConstruct
+    /*@PostConstruct
     public void initUsers() {
         //createUser( new User()); // TODO FIX CONSTRUCTOR
-    }
+    }*/
 
     public List<User> findAll(String username) {
         if (username != null) {

@@ -6,38 +6,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
 
 
-//@RequestMapping("/rest/v1/pokemon")
-//@RequestMapping("https://pokeapi.co/api/v2/pokemon/")
 @RestController
 @RequestMapping("/api/v1/pokemon")
 public class PokemonController {
 
-    // dependency
-
     @Autowired
     private PokemonService pokemonService;
 
-
-    // ResponseEntity (sends back responds to client) - with status code
-    @GetMapping // TODO: rename findAllPokemon???
-    public ResponseEntity<List<Pokemon>> findPokemon(@RequestParam(required = false) String name) { // TODO: Make param optional (required false)
+    @GetMapping
+    public ResponseEntity<List<Pokemon>> findPokemon(@RequestParam(required = false) String name) {
         var pokemon = pokemonService.findAll(name);
         return ResponseEntity.ok(pokemon); // return with status code: ok (200?) - 404 if failed
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pokemon>  findPokemonById(@PathVariable String id) {
+    public ResponseEntity<Pokemon> findPokemonById(@PathVariable String id) {
         return ResponseEntity.ok(pokemonService.findById(id));
     }
 
+    // TODO: FIX!
+    @GetMapping(params = "height")
+    public ResponseEntity<List<Pokemon>> findPokemonByHeight(@RequestParam(required = true) int height) {
+        System.out.println("HEIGHT!!!!!!!");
+        return ResponseEntity.ok(pokemonService.findByHeight(height));
+    }
+
+
+
+
+
+
+    //@GetMapping(params = "name&weight") - needed?
+    public Pokemon findPokemonByNameAndWeight(@RequestParam(required = true) String name, @RequestParam(required = true) int weight) {
+        return pokemonService.findByNameAndWeight(name, weight);
+    }
+
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Pokemon> savePokemon(@RequestBody Pokemon pokemon) {
         var savedPokemon = pokemonService.save(pokemon);
         return ResponseEntity.created(URI.create("/api/v1/pokemon/" + savedPokemon.getId())).body(savedPokemon);
@@ -45,6 +59,7 @@ public class PokemonController {
 
 
     @PutMapping("/{id}")
+    @Secured({"ROLE_EDITOR", "ROLE_ADMIN"})
     @ResponseStatus(HttpStatus.NO_CONTENT) // since void method
     public void updatePokemon(@PathVariable String id, @RequestBody Pokemon pokemon) {
         pokemonService.update(id, pokemon);
@@ -52,41 +67,22 @@ public class PokemonController {
 
 
     @DeleteMapping("/{id}")
+    @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String id) {
+    public void deletePokemon(@PathVariable String id) {
         pokemonService.delete(id);
     }
 
 
 
+
+
 /*
-    @Autowired
-    private PokemonService pokemonService;
 
-    @GetMapping("/{id}")
-    public Pokemon findPokemonById(@PathVariable String id) {
-        return pokemonService.findById(id);
-    }
-
-    //public ResponseEntity<List<Pokemon>> findAllPokemon(@RequestParam String name)
-    @GetMapping
-    public List<Pokemon> findAllPokemon(@RequestParam(required = false) String name)
-    {
-        return pokemonService.findAll(name);
-    }
-
-
-    // TODO Add findBYname
-
-    // TODO: BARA HA EN GETMAPPING???
-
-    // WHEN TO USE @REQUEST PARAM AND PathVariable????
-    //TEST
     @GetMapping
     public List<Pokemon> findPokemonByNameContain(@RequestParam(required = false) String name) {
         return pokemonService.findByNameContains(name);
     }
-
 
     @GetMapping
     public Pokemon findPokemonByPokedexIndex(@RequestParam(required = false) int ndex) {
@@ -107,47 +103,9 @@ public class PokemonController {
     public List<Pokemon> findPokemonByHeight(@RequestParam(required = false) int height) {
         return pokemonService.findByHeight(height);
     }
-
-
-    // "/rest/v1/pokemon?name=bulbasaur&weight=11"
-    @GetMapping
-    public Pokemon findPokemonByNameAndWeight(@RequestParam(required = false) String name, @RequestParam(required = false) int weight) {
-        return pokemonService.findByNameAndWeight(name, weight);
-    }
-
-    @GetMapping
-    public List<Pokemon> findPokemonByWeightAndHeight(@RequestParam(required = false) int weight, @RequestParam(required = false) int height) {
-        return pokemonService.findByWeightAndHeight(weight, height);
-    }
-
-
-   @PostMapping
-   public Pokemon savePokemon(@RequestBody Pokemon pokemon) {
-        return pokemonService.save(pokemon);
-   }
-
-
-   @PutMapping("/{id")
-   public void updatePokemon(@PathVariable String id, @RequestBody Pokemon pokemon) {
-        pokemonService.update(id, pokemon);
-   }
-
-
-   @DeleteMapping("/{id}")
-   public void deletePokemon(@PathVariable String id) {
-        pokemonService.delete(id);
-   }
-
 */
 
 
 
-    /*
 
-    C - @PostMapping
-    R - @GetMapping
-    U - @PutMapping
-    D - @DeleteMapping
-
-     */
 }

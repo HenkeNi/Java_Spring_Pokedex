@@ -11,7 +11,6 @@ import java.io.IOException;
 @Component
 public class AuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
-
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
         response.addHeader("WWW-Authenticate", "Basic realm - " + getRealmName());

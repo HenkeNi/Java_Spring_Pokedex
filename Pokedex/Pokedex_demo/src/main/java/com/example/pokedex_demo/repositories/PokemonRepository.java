@@ -3,6 +3,7 @@ package com.example.pokedex_demo.repositories;
 
 import com.example.pokedex_demo.entities.Pokemon;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface PokemonRepository extends MongoRepository<Pokemon, String> {
+
+
+    List<Pokemon> findAll();
 
     // NOTE: It's possible to chain multiple, and using deleteBy
 
@@ -25,7 +29,12 @@ public interface PokemonRepository extends MongoRepository<Pokemon, String> {
     List<Pokemon> findByHeight(int height);
 
     // TODO: Fixa i service istället??? lägg ihop resultat från name och weight
-    Optional<Pokemon> findByNameAndWeight(String name, int weight);
+    //Optional<Pokemon> findByNameAndWeight(String name, int weight);
+
+
+
+    @Query("{$and: [{ 'name': /?0/}, {'weight': ?1 }]}")
+    Optional<Pokemon> findByNameContainsAndWeightGreaterThanEqual(String name, int weight);
     List<Pokemon> findByWeightAndHeight(int weight, int height);
 
 
