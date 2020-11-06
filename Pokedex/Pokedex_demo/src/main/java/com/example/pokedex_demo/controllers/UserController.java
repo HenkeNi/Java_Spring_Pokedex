@@ -19,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    @Secured("ROLE_USER") // tillåter alla användare att anropa
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     public ResponseEntity<List<User>> findAllUsers(@RequestParam(required = false) String username) {
         var users = userService.findAll(username);
         return ResponseEntity.ok(users);
@@ -30,11 +30,6 @@ public class UserController {
     public ResponseEntity<User> findUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.findById(id));
     }
-
-    /*@GetMapping("/username/{username}")
-    public User findUserByUsername(@RequestParam String username) {
-        return userService.findById(username);
-    }*/
 
 
     @PostMapping

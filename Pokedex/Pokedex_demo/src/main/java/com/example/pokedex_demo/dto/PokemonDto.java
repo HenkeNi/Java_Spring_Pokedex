@@ -2,6 +2,7 @@ package com.example.pokedex_demo.dto;
 
 // dto - Data Transfer Object
 
+import com.example.pokedex_demo.entities.Type;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class PokemonDto {
     //@JsonProperty("name") // TODO: BEHÖVS????
     private String name;
     //@JsonProperty("types")
-    private List<Object> types;
+    private List<Type> types;
     //@JsonProperty("height")
     private int height;
     //@JsonProperty("weight")
@@ -22,7 +23,7 @@ public class PokemonDto {
 
     public PokemonDto() { }
 
-    public PokemonDto(String name, List<Object> types, int height, int weight, int ndex) {
+    public PokemonDto(String name, List<Type> types, int height, int weight, int ndex) {
         this.name = name;
         this.types = types;
         this.height = height;
@@ -38,11 +39,11 @@ public class PokemonDto {
         this.name = name;
     }
 
-    public List<Object> getTypes() {
+    public List<Type> getTypes() {
         return types;
     }
 
-    public void setTypes(List<Object> types) {
+    public void setTypes(List<Type> types) {
         this.types = types;
     }
 

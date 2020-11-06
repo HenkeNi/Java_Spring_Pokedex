@@ -2,31 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c03dfd28-e9fb-4256-b5bf-4a802ab1d948" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_1_6_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_restdocs_spring_restdocs_core_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_restdocs_spring_restdocs_mockmvc_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/asciidoc/index.adoc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/MyWebMvcConfigurer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pokedex_demo/src/test/java/com/example/pokedex_demo/controllers/PokemonControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_ui_springfox_swagger_ui_rfc6570_1_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/Type.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/AuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/AuthenticationEntryPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/OpenController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/PokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/PokemonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/dto/PokemonDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/dto/PokemonDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/Pokemon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/repositories/PokemonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/repositories/PokemonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/MyUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/MyUserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonConsumerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/test/java/com/example/pokedex_demo/controllers/PokemonControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/test/java/com/example/pokedex_demo/controllers/PokemonControllerTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +70,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../rest_docs_sample" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -94,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.DemoApplication">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.pokedex_demo.DemoApplication" />
       <module name="Pokedex_demo" />
@@ -108,9 +110,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PokemonControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Pokedex_demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pokedex_demo.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pokedex_demo.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pokedex_demo.controllers.PokemonControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PokemonControllerTest.doNothing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Pokedex_demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.pokedex_demo.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.pokedex_demo.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.pokedex_demo.controllers.PokemonControllerTest" />
+      <option name="METHOD_NAME" value="doNothing" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DemoApplication" />
+        <item itemvalue="JUnit.PokemonControllerTest" />
+        <item itemvalue="JUnit.PokemonControllerTest.doNothing" />
       </list>
     </recent_temporary>
   </component>

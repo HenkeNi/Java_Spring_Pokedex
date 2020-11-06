@@ -13,7 +13,7 @@ public class Pokemon implements Serializable {
     @Id
     private String id;
     private String name;
-    private List<Object> types;
+    private List<Type> types;
     private int height;
     private int weight;
     @Indexed(unique = true)
@@ -22,7 +22,7 @@ public class Pokemon implements Serializable {
 
     public Pokemon() { }
 
-    public Pokemon(String name, List<Object> types, int height, int weight, int ndex) {
+    public Pokemon(String name, List<Type> types, int height, int weight, int ndex) {
         this.name = name;
         this.types = types;
         this.height = height;
@@ -44,11 +44,11 @@ public class Pokemon implements Serializable {
         this.name = name;
     }
 
-    public List<Object> getTypes() {
+    public List<Type> getTypes() {
         return types;
     }
 
-    public void setTypes(List<Object> types) {
+    public void setTypes(List<Type> types) {
         this.types = types;
     }
 

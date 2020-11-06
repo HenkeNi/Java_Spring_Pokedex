@@ -17,7 +17,6 @@ public class PokemonConsumerService {
 
     private final RestTemplate restTemplate;
     private String url;
-    //private static final String URL = "https://pokeapi.co/api/v2/";  //"https://pokeapi.co/api/v2/pokemon"; // https://pokeapi.co/api ??
 
     public PokemonConsumerService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
@@ -28,7 +27,7 @@ public class PokemonConsumerService {
     }
 
 
-    public PokemonDto searchByName(String name) {
+    public PokemonDto search(String name) {
         var urlWithNameQuery = url + "pokemon/" + name;
 
         var pokemon = restTemplate.getForObject(urlWithNameQuery, PokemonDto.class);
@@ -36,7 +35,6 @@ public class PokemonConsumerService {
         if (pokemon == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No pokemon found!");
         }
-        //pokemon.setTest("Updated");
         return pokemon;
     }
 

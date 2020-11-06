@@ -12,53 +12,28 @@ import java.util.Optional;
 @Repository
 public interface PokemonRepository extends MongoRepository<Pokemon, String> {
 
-
-    List<Pokemon> findAll();
-
-    // NOTE: It's possible to chain multiple, and using deleteBy
-
-    // TODO: return in order: findByXStartingWithOrderByYDesc(string)
-
-    Optional<Pokemon> findByName(String name);
-    List<Pokemon> findByNameContains(String name); // findByNameContaining
+    //Optional<Pokemon> findByName(String name);
+    List<Pokemon> findByNameContains(String name);
+    List<Pokemon> findByName(String name);
 
     Optional<Pokemon> findByNdex(int ndex);
     List<Pokemon> findByTypes(String[] types);
 
+
     List<Pokemon> findByWeight(int weight);
     List<Pokemon> findByHeight(int height);
 
-    // TODO: Fixa i service istället??? lägg ihop resultat från name och weight
-    //Optional<Pokemon> findByNameAndWeight(String name, int weight);
-
-
-
     @Query("{$and: [{ 'name': /?0/}, {'weight': ?1 }]}")
-    Optional<Pokemon> findByNameContainsAndWeightGreaterThanEqual(String name, int weight);
+    List<Pokemon> findByNameContainingAndWeight(String name, int weight);
+
+    /*
+    @Query("{$and: [{ 'name': /?0/}, {'height': ?1 }]}")
+    List<Pokemon> findByNameContainingAndHeight(String name, int height);
+
+    @Query("{$and: [{ 'name': /?0/}, {'weight': ?1 }, {'height': ?2}]}")
+    List<Pokemon> findByNameContainingAndWeightAndHeight(String name, int weight, int height);*/
+
+    @Query("{$and: [{ 'weight': /?0/}, {'height': ?1 }]}")
     List<Pokemon> findByWeightAndHeight(int weight, int height);
-
-
-    List<Pokemon> findByNdexGreaterThan(int ndex);
-    List<Pokemon> findByNdexGreaterThanEqual(int ndex);
-
-    List<Pokemon> findByWeightGreaterThan(int weight);
-    List<Pokemon> findByWeightGreaterThanEqual(int weight);
-
-    List<Pokemon> findByHeightGreaterThan(int height);
-    List<Pokemon> findByHeightGreaterThanEqual(int height);
-
-    List<Pokemon> findByNdexLessThan(int ndex);
-    List<Pokemon> findByNdexLessThanEqual(int ndex);
-
-    List<Pokemon> findByWeightLessThan(int height);
-    List<Pokemon> findByWeightLessThanEqual(int height);
-
-    List<Pokemon> findByHeightLessThan(int height);
-    List<Pokemon> findByHeightLessThanEqual(int height);
-
-    List<Pokemon> findByNdexBetween(int from, int to);
-    List<Pokemon> findByWeightBetween(int from, int to);
-    List<Pokemon> findByHeightBetween(int from, int to);
-
 
 }

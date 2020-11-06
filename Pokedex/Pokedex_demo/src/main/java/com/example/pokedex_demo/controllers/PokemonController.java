@@ -20,34 +20,38 @@ public class PokemonController {
     @Autowired
     private PokemonService pokemonService;
 
-    @GetMapping
+
+    // TODO: Ta bort secured??
+
+    /*@GetMapping
     public ResponseEntity<List<Pokemon>> findPokemon(@RequestParam(required = false) String name) {
         var pokemon = pokemonService.findAll(name);
+        return ResponseEntity.ok(pokemon); // return with status code: ok (200?) - 404 if failed
+    }*/
+
+
+    // pokemon?name=_NAME_&weight=_10_
+    @GetMapping
+    public ResponseEntity<List<Pokemon>> findPokemon(@RequestParam(required = false) String name,
+                                                     @RequestParam(required = false) String weight) {
+        var pokemon = pokemonService.findAll(name, weight);
         return ResponseEntity.ok(pokemon); // return with status code: ok (200?) - 404 if failed
     }
 
 
+    // pokemon/1
     @GetMapping("/{id}")
+    public ResponseEntity<Pokemon> findPokemonByNdex(@PathVariable int id) {
+        System.out.println("Searching by ndex");
+        return ResponseEntity.ok(pokemonService.findByNdex(id));
+    }
+
+
+    /*@GetMapping("/{id}")
     public ResponseEntity<Pokemon> findPokemonById(@PathVariable String id) {
         return ResponseEntity.ok(pokemonService.findById(id));
-    }
+    }*/
 
-    // TODO: FIX!
-    @GetMapping(params = "height")
-    public ResponseEntity<List<Pokemon>> findPokemonByHeight(@RequestParam(required = true) int height) {
-        System.out.println("HEIGHT!!!!!!!");
-        return ResponseEntity.ok(pokemonService.findByHeight(height));
-    }
-
-
-
-
-
-
-    //@GetMapping(params = "name&weight") - needed?
-    public Pokemon findPokemonByNameAndWeight(@RequestParam(required = true) String name, @RequestParam(required = true) int weight) {
-        return pokemonService.findByNameAndWeight(name, weight);
-    }
 
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -72,40 +76,5 @@ public class PokemonController {
     public void deletePokemon(@PathVariable String id) {
         pokemonService.delete(id);
     }
-
-
-
-
-
-/*
-
-    @GetMapping
-    public List<Pokemon> findPokemonByNameContain(@RequestParam(required = false) String name) {
-        return pokemonService.findByNameContains(name);
-    }
-
-    @GetMapping
-    public Pokemon findPokemonByPokedexIndex(@RequestParam(required = false) int ndex) {
-        return pokemonService.findByNdex(ndex);
-    }
-
-    @GetMapping
-    public List<Pokemon> findPokemonByTypes(@RequestParam(required = false) String[] types) {
-        return pokemonService.findByType(types);
-    }
-
-    @GetMapping
-    public List<Pokemon> findPokemonByWeight(@RequestParam(required = false) int weight) {
-        return pokemonService.findByWeight(weight);
-    }
-
-    @GetMapping
-    public List<Pokemon> findPokemonByHeight(@RequestParam(required = false) int height) {
-        return pokemonService.findByHeight(height);
-    }
-*/
-
-
-
 
 }
