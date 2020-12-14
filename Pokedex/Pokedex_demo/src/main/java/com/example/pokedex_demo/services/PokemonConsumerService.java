@@ -39,11 +39,6 @@ public class PokemonConsumerService {
     }
 
 
-    /*public PokemonDto searchByHeight(int height) {
-        var urlWithHeightQuery = url + "pokemon/" + height;
-    }*/
-
-
     public List<PokemonDto> getOriginalPokemonFromAPi() {
         var urlWithOriginalQuery = url + "?limit=151&offset=0";
         var orignalPokemon = restTemplate.getForObject(urlWithOriginalQuery, PokemonDto.class);
@@ -53,8 +48,6 @@ public class PokemonConsumerService {
         }
 
         return List.of(orignalPokemon);
-        //orignalPokemon.getResult().forEach(pokemon -> PokeApiHarvestDto.save(new PokeApiHarvest(pokemon.getName(), pokemon.getType(), pokemon.getHeight()
-       // ,pokemon.getWeight(), pokemon.getNdex())));
     }
 
 
@@ -67,86 +60,4 @@ public class PokemonConsumerService {
     }
 
 
-
-
-
-
-
-
-    /*@Autowired
-    private PokemonRepository pokemonRepository;
-
-
-    public List<Pokemon> findAll(String name) {
-        if (name != null) {
-            var pokemon = pokemonRepository.findByName(name).orElseThrow(RuntimeException::new);
-            return List.of(pokemon);
-        }
-        return pokemonRepository.findAll();
-    }
-
-
-    public Pokemon findById(String id) {
-        return pokemonRepository.findById(id).orElseThrow(RuntimeException::new);
-    }
-
-
-    public Pokemon findByPokemonName(String name) {
-        return pokemonRepository.findByPokemonName(name).orElseThrow(RuntimeException::new);
-    }
-
-
-    public Pokemon save(Pokemon pokemon) {
-        return pokemonRepository.save(pokemon);
-    }
-
-
-    public void update(String id, Pokemon pokemon) {
-
-        if (!pokemonRepository.existsById(id)) {
-            throw new RuntimeException();
-        }
-        pokemon.setId(id);
-        pokemonRepository.save(pokemon);
-    }
-
-
-    public void delete(String id) {
-
-        if (!pokemonRepository.existsById(id)) {
-            throw new RuntimeException();
-        }
-        pokemonRepository.deleteById(id);
-    }
-
-
-    // TEST
-    public List<Pokemon> findByNameContains(String name) {
-        return pokemonRepository.findByNameContains(name);
-    }
-
-    public Pokemon findByNdex(int ndex) {
-        return pokemonRepository.findByNdex(ndex).orElseThrow(RuntimeException::new);
-    }
-
-    public List<Pokemon> findByType(String[] types) {
-        return pokemonRepository.findByTypes(types);
-    }
-
-    public List<Pokemon> findByWeightAndHeight(int weight, int height) {
-        return pokemonRepository.findByWeightAndHeight(weight, height);
-    }
-
-    public Pokemon findByNameAndWeight(String name, int weight) {
-        return pokemonRepository.findByNameAndWeight(name, weight).orElseThrow(RuntimeException::new);
-    }
-
-
-    public List<Pokemon> findByWeight(int weight) {
-        return pokemonRepository.findByWeight(weight);
-    }
-
-    public List<Pokemon> findByHeight(int height) {
-        return pokemonRepository.findByHeight(height);
-    }*/
 }

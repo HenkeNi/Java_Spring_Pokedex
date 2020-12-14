@@ -4,6 +4,7 @@ import com.example.pokedex_demo.entities.User;
 import com.example.pokedex_demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -20,14 +21,30 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // CREATES users every time program is run...
-    // When users has been created; this method will run
-    // PostConstruct is lika a constructor with all Spring related
-    // injections finished, like @Autowired etc
     /*@PostConstruct
     public void initUsers() {
-        //createUser( new User()); // TODO FIX CONSTRUCTOR
+        //String name, LocalDate birthdate, String username, String password, List<String> roles
+        List<String> roles = Arrays.asList("ROLE_USER", "ROLE_EDITOR" , "ROLE_ADMIN");
+        LocalDate date = LocalDate.now();
+        String password = passwordEncoder.encode("secret");
+
+        createUser( new User("Ash", date, "ash", password, roles)); // TODO FIX CONSTRUCTOR
+    }
+
+    public User createUser(User user) {
+         System.out.println("Posting new user...");
+        return userRepository.save(user);
     }*/
+
+    public User registerNewUser(User user) {
+        /*var existingUser = userRepository.findByUsername((user.getUsername()));
+        if (existingUser !== null) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "User already")
+        }*/
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
 
     public List<User> findAll(String username) {
         if (username != null) {
@@ -44,10 +61,6 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(RuntimeException::new
         );
-    }
-
-    public User createUser(User user) {
-        return userRepository.save(user);
     }
 
 
@@ -76,6 +89,12 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by id %s.", id));
         }
         userRepository.deleteById(id);
+    }
+
+
+    public User findCurrentUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Couldn't fetch current user"));
     }
 
 }

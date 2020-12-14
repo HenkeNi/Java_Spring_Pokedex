@@ -26,7 +26,9 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.printf("FLOADINg user by name", username);
         User user = userService.findByUsername(username);
+        System.out.println(user);
         if (user == null) {
             throw new UsernameNotFoundException("User name " + username + " not found");
         }
@@ -39,6 +41,8 @@ public class MyUserDetailsService implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                 .collect(Collectors.toList());
     }
+
+
 
 
 

@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .formLogin().disable()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/pokemon/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/pokemon").permitAll()
                 .antMatchers("/api/v1/**").authenticated() // NEEDED????
@@ -55,13 +56,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-    @Autowired
+    /*@Autowired
     public void configureGlobal(AuthenticationManagerBuilder authentication) throws Exception {
         authentication.inMemoryAuthentication()
                 .withUser("Admin")
                 .password(passwordEncoder().encode("supersecret"))
                 .roles("USER");
-    }
+    }*/
 
 
 

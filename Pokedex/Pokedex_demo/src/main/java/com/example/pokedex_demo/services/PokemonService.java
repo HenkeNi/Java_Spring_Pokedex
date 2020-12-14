@@ -25,12 +25,20 @@ public class PokemonService {
 
 
     @Cacheable(value = "pokemonCache", key = "#name")
-    public List<Pokemon> findAll(String name, String weight) {
+    public List<Pokemon> findPokemon(String name, String weight) {
 
+        /*List<Pokemon> pokemon;
 
-        /*if (name == null && weight != null) {
-            System.out.println("By wieght");
-            return pokemonRepository.findByWeight(Integer.parseInt(weight));
+        if (name != null || weight == null) {
+            pokemon = pokemonRepository.findByName(name);
+        }
+        else if (name == null && weight != null) {
+            try {
+                int intWeight = Integer.parseInt(weight);
+                pokemon = pokemonRepository.findByWeight(Integer.parseInt(weight));
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }*/
 
         if (name != null && weight != null) {
@@ -38,7 +46,6 @@ public class PokemonService {
             for (Pokemon pokemon1 : pokemon) {
                 System.out.println(pokemon1);
             }
-            System.out.println("By name and wieg");
             return pokemonRepository.findByNameContainingAndWeight(name, Integer.parseInt(weight));
         }
 
@@ -90,6 +97,33 @@ public class PokemonService {
 
 
 
+    @CachePut(value = "pokemonCache", key = "#result.id")
+    public Pokemon save(Pokemon pokemon) {
+        return pokemonRepository.save(pokemon);
+    }
+
+
+    // @CachePut(value = "pokemonCache", key = "id")
+    @CachePut(value = "pokemonCache", key = "#id")
+    public void update(String id, Pokemon pokemon) {
+        if (!pokemonRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pokemon not found");
+        }
+        pokemon.setId(id);
+        pokemonRepository.save(pokemon);
+    }
+
+
+    @CacheEvict(value = "pokemonCache", allEntries = true)
+    public void delete(String id) {
+        if (!pokemonRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pokemon not found");
+        }
+        pokemonRepository.deleteById(id);
+    }
+
+
+
 
 
 
@@ -137,30 +171,5 @@ public class PokemonService {
 
 
 
-
-    @CachePut(value = "pokemonCache", key = "#result.id")
-    public Pokemon save(Pokemon pokemon) {
-        return pokemonRepository.save(pokemon);
-    }
-
-
-    // @CachePut(value = "pokemonCache", key = "id")
-    @CachePut(value = "pokemonCache", key = "#id")
-    public void update(String id, Pokemon pokemon) {
-        if (!pokemonRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pokemon not found");
-        }
-        pokemon.setId(id);
-        pokemonRepository.save(pokemon);
-    }
-
-
-    @CacheEvict(value = "pokemonCache", allEntries = true)
-    public void delete(String id) {
-        if (!pokemonRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pokemon not found");
-        }
-        pokemonRepository.deleteById(id);
-    }
 
 }
