@@ -1,8 +1,14 @@
 package com.example.pokedex_demo.entities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Type Model")
 public class Type {
 
+    @ApiModelProperty(notes = "Name of the Type", name = "typeName", required = true, value = "Water")
     private String typeName;
+    @ApiModelProperty(notes = "ImageURL of the Type", name = "url", required = true, value = "....")
     private String url;
 
     public Type() {

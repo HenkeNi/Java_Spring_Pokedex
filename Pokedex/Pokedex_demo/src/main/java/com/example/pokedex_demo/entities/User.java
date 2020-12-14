@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,24 +14,31 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
+@ApiModel(description = "User Model")
 public class User {
 
+    @ApiModelProperty(notes = "ID of the User", name = "id", required = true, value = "1")
     @Id
     private String id;
 
+    @ApiModelProperty(notes = "Name of the User", name = "name", required = true, value = "Bob")
     @NotNull
     private String name;
 
+    @ApiModelProperty(notes = "Date of birth for the User", name = "birthdate", required = true, value = "1901-03-29")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd", shape=JsonFormat.Shape.STRING)
     private LocalDate birthdate;
 
+    @ApiModelProperty(notes = "Username of the User", name = "username", required = true, value = "BobTheBuilder")
     @NotEmpty
     private String username;
 
+    @ApiModelProperty(notes = "Password of the User", name = "password", required = true, value = "secret")
     @NotEmpty @Size(min = 8, max = 24)
     private String password;
 
+    @ApiModelProperty(notes = "Roles of the User", name = "roles", required = true, value = "ROLE_USER")
     private List<String> roles;
 
     public User() {
