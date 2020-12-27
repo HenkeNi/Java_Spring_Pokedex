@@ -62,8 +62,10 @@ public class PokemonController {
             @ApiResponse(code = 403, message = "FORBIDDEN!"),
             @ApiResponse(code = 404, message = "NOT FOUND")
     })
+
     @GetMapping("/{id}")
     public ResponseEntity<Pokemon> findPokemonByNdex(@PathVariable int id) {
+        System.out.printf("POKEMON NUMBER: ", id);
         return ResponseEntity.ok(pokemonService.findByNdex(id));
     }
 

@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c03dfd28-e9fb-4256-b5bf-4a802ab1d948" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/Java_Spring_Pokedex.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_ui_springfox_swagger_ui_rfc6570_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/resources/pokedex.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/resources/static/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/AuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/AuthenticationEntryPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/config/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/PokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/PokemonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/Pokemon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/Type.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/repositories/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/MyUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/MyUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/PokemonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pokedex_demo/src/main/java/com/example/pokedex_demo/services/UserService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +52,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../spring-chat-v4-final" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AwesomeAuctions" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">

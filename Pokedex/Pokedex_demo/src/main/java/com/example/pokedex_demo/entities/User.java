@@ -3,7 +3,6 @@ package com.example.pokedex_demo.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
@@ -22,7 +21,7 @@ public class User {
     private String id;
 
     @ApiModelProperty(notes = "Name of the User", name = "name", required = true, value = "Bob")
-    @NotNull
+    //@NotNull
     private String name;
 
     @ApiModelProperty(notes = "Date of birth for the User", name = "birthdate", required = true, value = "1901-03-29")
@@ -31,8 +30,11 @@ public class User {
     private LocalDate birthdate;
 
     @ApiModelProperty(notes = "Username of the User", name = "username", required = true, value = "BobTheBuilder")
-    @NotEmpty
+    //@NotEmpty
     private String username;
+
+    @ApiModelProperty(notes = "Email of the User", name = "email", required = true, value = "Bob@Builder")
+    private String email;
 
     @ApiModelProperty(notes = "Password of the User", name = "password", required = true, value = "secret")
     @NotEmpty @Size(min = 8, max = 24)
@@ -45,10 +47,16 @@ public class User {
 
     }
 
-    public User(String name, LocalDate birthdate, String username, String password, List<String> roles) {
+    public User(String email, String password   ) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String name, LocalDate birthdate, String username, String email, String password, List<String> roles) {
         this.name = name;
         this.birthdate = birthdate;
         this.username = username;
+        this.email = email;
         this.password = password;
         this.roles = roles;
     }
@@ -85,6 +93,10 @@ public class User {
         this.username = username;
     }
 
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
+
     @JsonIgnore // ignores password
     public String getPassword() {
         return password;
@@ -101,6 +113,17 @@ public class User {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
 }

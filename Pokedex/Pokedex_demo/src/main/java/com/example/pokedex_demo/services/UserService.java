@@ -15,11 +15,101 @@ import java.util.List;
 @Service
 public class UserService {
 
+    @Autowired MyUserDetailsService myUserDetailsService;
+
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository userRepo;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+
+    public List<User> findAll() {
+        return userRepo.findAll();
+    }
+    /*public List<User> findAll(String username) {
+        if (username != null) {
+            var user = userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by username %s.", username)));
+            return List.of(user);
+        }
+        return userRepository.findAll();
+    }*/
+
+    public User findById(String id) {
+        return userRepo.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by id %s.", id))); // TODO: THROW EXCEPTION with status code
+    }
+
+    public User findByUsername(String username) {
+        return userRepo.findByUsername(username).orElseThrow(RuntimeException::new
+        );
+    }
+
+
+    public User findByName(String name) {
+        return userRepo.findByName(name).orElseThrow(RuntimeException::new);
+    }
+
+    public User findByEmail(String email) {
+        return userRepo.findByEmail(email);
+    }
+
+    public User save(User user) {
+        if (StringUtils.isEmpty(user.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.I_AM_A_TEAPOT, "Password not included!");
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepo.save(user);
+    }
+
+
+    public void update(String id, User user) {
+        var currentUser = this.getCurrentUser();
+        if (!userRepo.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+        if(sameUserOrAdminOrEditor(currentUser, id)) {
+            user.setId(id);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepo.save(user);
+        }
+        else throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You can not update this user");
+    }
+
+
+    private Boolean sameUserOrAdminOrEditor (User currentUser, String id) {
+        return (currentUser.getId().equals(id)||currentUser.getRoles().contains("ADMIN")||currentUser.getRoles().contains("EDITOR"));
+    }
+
+
+
+
+    /*public void update(String id, User user) {
+
+        // Check if user exist before updating
+        if (!userRepo.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by id %s.", id));
+        }
+        user.setId(id);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepo.save(user);
+    }*/
+
+    public void delete(String id) {
+
+        if (!userRepo.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by id %s.", id));
+        }
+        userRepo.deleteById(id);
+    }
+
+    public User getCurrentUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepo.findByEmail(email);
+    }
+
+
+
 
     /*@PostConstruct
     public void initUsers() {
@@ -28,13 +118,13 @@ public class UserService {
         LocalDate date = LocalDate.now();
         String password = passwordEncoder.encode("secret");
 
-        createUser( new User("Ash", date, "ash", password, roles)); // TODO FIX CONSTRUCTOR
-    }
+        createUser( new User("Santa", date, "santa20", "santa@gmail.com" , password, roles)); // TODO FIX CONSTRUCTOR
+    }*/
 
     public User createUser(User user) {
          System.out.println("Posting new user...");
-        return userRepository.save(user);
-    }*/
+        return userRepo.save(user);
+    }
 
     public User registerNewUser(User user) {
         /*var existingUser = userRepository.findByUsername((user.getUsername()));
@@ -42,59 +132,20 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "User already")
         }*/
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+        return userRepo.save(user);
     }
 
 
-    public List<User> findAll(String username) {
-        if (username != null) {
-            var user = userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by username %s.", username)));
-            return List.of(user);
-        }
-        return userRepository.findAll();
-    }
-
-    public User findById(String id) {
-        return userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by id %s.", id))); // TODO: THROW EXCEPTION with status code
-    }
-
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(RuntimeException::new
-        );
-    }
 
 
-    public User save(User user) {
-        if (StringUtils.isEmpty(user.getPassword())) {
-            throw new ResponseStatusException(HttpStatus.I_AM_A_TEAPOT, "Password not included!");
-        }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
-    }
-
-    public void update(String id, User user) {
-
-        // Check if user exist before updating
-        if (!userRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by id %s.", id));
-        }
-        user.setId(id);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-    }
-
-    public void delete(String id) {
-
-        if (!userRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Could not find user by id %s.", id));
-        }
-        userRepository.deleteById(id);
-    }
 
 
-    public User findCurrentUser() {
+
+
+
+    /*public User findCurrentUser() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userRepository.findByUsername(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Couldn't fetch current user"));
-    }
+    }*/
 
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,17 +36,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity
                 .csrf().disable()
-                .formLogin().disable()
+                .formLogin()
+                .and()
+                //.formLogin().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/v1/pokemon/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/pokemon").permitAll()
-                .antMatchers("/api/v1/**").authenticated() // NEEDED????
-                // .antMatchers("/api/**").hasRole("ROLE_ADMIN").authenticated() // KRÄVER AUTENCIERING
-                //.authorizeRequests().anyRequest().authenticated()
+                .antMatchers(HttpMethod.GET, "/api/v1/pokemon**").permitAll()
+                .antMatchers("/api/v1/users/login").permitAll()
+                .antMatchers("/api/v1/users/whoami").permitAll()
+                .antMatchers("api/v1/**").authenticated()
                 .and()
-                .httpBasic().authenticationEntryPoint(entryPoint)
-                .and()
+                //.httpBasic().authenticationEntryPoint(entryPoint)
+                //.and()
                 .logout(l -> l.logoutSuccessUrl("/"));
     }
 
@@ -55,6 +57,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
+    @Bean("authenticationManager")
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
     /*@Autowired
     public void configureGlobal(AuthenticationManagerBuilder authentication) throws Exception {

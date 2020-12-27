@@ -1,0 +1,603 @@
+{
+"swagger": "2.0",
+"info": {
+"description": "Api for fetching pokemons",
+"version": "V1.0",
+"title": "Java Spring Pokedex"
+},
+"host": "localhost:8081",
+"basePath": "/",
+"tags": [
+{
+"name": "pokemon-controller",
+"description": "Pokemon Controller"
+},
+{
+"name": "user-controller",
+"description": "User Controller"
+}
+],
+"paths": {
+"/api/v1/pokemon": {
+"get": {
+"tags": [
+"pokemon-controller"
+],
+"summary": "Fetch all Pokemon",
+"operationId": "findPokemonUsingGET",
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "name",
+"in": "query",
+"description": "name",
+"required": false,
+"type": "string"
+},
+{
+"name": "weight",
+"in": "query",
+"description": "weight",
+"required": false,
+"type": "string"
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS",
+"schema": {
+"$ref": "#/definitions/Iterable"
+}
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+},
+"post": {
+"tags": [
+"pokemon-controller"
+],
+"summary": "Save Pokemon",
+"operationId": "savePokemonUsingPOST",
+"consumes": [
+"application/json"
+],
+"produces": [
+"application/json"
+],
+"parameters": [
+{
+"in": "body",
+"name": "pokemon",
+"description": "pokemon",
+"required": true,
+"schema": {
+"$ref": "#/definitions/Pokemon"
+}
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS",
+"schema": {
+"$ref": "#/definitions/Pokemon"
+}
+},
+"201": {
+"description": "Created"
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+}
+},
+"/api/v1/pokemon/{id}": {
+"get": {
+"tags": [
+"pokemon-controller"
+],
+"summary": "Get Pokemon by pokedex number",
+"operationId": "findPokemonByNdexUsingGET",
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"description": "id",
+"required": true,
+"type": "integer",
+"format": "int32"
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS",
+"schema": {
+"$ref": "#/definitions/Pokemon"
+}
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+},
+"put": {
+"tags": [
+"pokemon-controller"
+],
+"summary": "Update Pokemon details",
+"operationId": "updatePokemonUsingPUT",
+"consumes": [
+"application/json"
+],
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"description": "id",
+"required": true,
+"type": "string"
+},
+{
+"in": "body",
+"name": "pokemon",
+"description": "pokemon",
+"required": true,
+"schema": {
+"$ref": "#/definitions/Pokemon"
+}
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS"
+},
+"201": {
+"description": "Created"
+},
+"204": {
+"description": "No Content"
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+},
+"delete": {
+"tags": [
+"pokemon-controller"
+],
+"summary": "Delete Pokemon",
+"operationId": "deletePokemonUsingDELETE",
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"description": "id",
+"required": true,
+"type": "string"
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS"
+},
+"204": {
+"description": "No Content"
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+}
+},
+"/api/v1/users": {
+"get": {
+"tags": [
+"user-controller"
+],
+"summary": "Fetch all users",
+"operationId": "findAllUsersUsingGET",
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "username",
+"in": "query",
+"description": "username",
+"required": false,
+"type": "string"
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS",
+"schema": {
+"$ref": "#/definitions/Iterable"
+}
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+},
+"post": {
+"tags": [
+"user-controller"
+],
+"summary": "Save user",
+"operationId": "saveUserUsingPOST",
+"consumes": [
+"application/json"
+],
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"in": "body",
+"name": "user",
+"description": "user",
+"required": true,
+"schema": {
+"$ref": "#/definitions/User"
+}
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS",
+"schema": {
+"$ref": "#/definitions/User"
+}
+},
+"201": {
+"description": "Created"
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+}
+},
+"/api/v1/users/username/{username}": {
+"get": {
+"tags": [
+"user-controller"
+],
+"summary": "Fetch all users by Username",
+"operationId": "findByUsernameUsingGET",
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "username",
+"in": "path",
+"description": "username",
+"required": true,
+"type": "string"
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS",
+"schema": {
+"$ref": "#/definitions/User"
+}
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+}
+},
+"/api/v1/users/{id}": {
+"get": {
+"tags": [
+"user-controller"
+],
+"summary": "Fetch all users by Id",
+"operationId": "findUserByIdUsingGET",
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"description": "id",
+"required": true,
+"type": "string"
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS",
+"schema": {
+"$ref": "#/definitions/User"
+}
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+},
+"put": {
+"tags": [
+"user-controller"
+],
+"summary": "Update user details",
+"operationId": "updateUserUsingPUT",
+"consumes": [
+"application/json"
+],
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"description": "id",
+"required": true,
+"type": "string"
+},
+{
+"in": "body",
+"name": "user",
+"description": "user",
+"required": true,
+"schema": {
+"$ref": "#/definitions/User"
+}
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS"
+},
+"201": {
+"description": "Created"
+},
+"204": {
+"description": "No Content"
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+},
+"delete": {
+"tags": [
+"user-controller"
+],
+"summary": "Delete user",
+"operationId": "deleteUserUsingDELETE",
+"produces": [
+"*/*"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"description": "id",
+"required": true,
+"type": "string"
+}
+],
+"responses": {
+"200": {
+"description": "SUCCESS"
+},
+"204": {
+"description": "No Content"
+},
+"401": {
+"description": "UNAUTHORIZED!"
+},
+"403": {
+"description": "FORBIDDEN!"
+},
+"404": {
+"description": "NOT FOUND"
+}
+},
+"deprecated": false
+}
+}
+},
+"definitions": {
+"Iterable": {
+"type": "object",
+"title": "Iterable"
+},
+"Pokemon": {
+"type": "object",
+"required": [
+"height",
+"id",
+"name",
+"ndex",
+"types",
+"weight"
+],
+"properties": {
+"height": {
+"type": "integer",
+"format": "int32",
+"description": "13"
+},
+"id": {
+"type": "string",
+"description": "1"
+},
+"name": {
+"type": "string",
+"description": "Bulbasaur"
+},
+"ndex": {
+"type": "integer",
+"format": "int32",
+"description": "01"
+},
+"types": {
+"type": "array",
+"description": "Grass",
+"items": {
+"$ref": "#/definitions/Type"
+}
+},
+"weight": {
+"type": "integer",
+"format": "int32",
+"description": "200"
+}
+},
+"title": "Pokemon",
+"description": "Pokemon Model"
+},
+"Type": {
+"type": "object",
+"required": [
+"typeName",
+"url"
+],
+"properties": {
+"typeName": {
+"type": "string",
+"description": "Water"
+},
+"url": {
+"type": "string",
+"description": "...."
+}
+},
+"title": "Type",
+"description": "Type Model"
+},
+"User": {
+"type": "object",
+"required": [
+"birthdate",
+"id",
+"name",
+"roles",
+"username"
+],
+"properties": {
+"birthdate": {
+"type": "string",
+"description": "1901-03-29"
+},
+"id": {
+"type": "string",
+"description": "1"
+},
+"name": {
+"type": "string",
+"description": "Bob"
+},
+"password": {
+"type": "string"
+},
+"roles": {
+"type": "array",
+"description": "ROLE_USER",
+"items": {
+"type": "string"
+}
+},
+"username": {
+"type": "string",
+"description": "BobTheBuilder"
+}
+},
+"title": "User",
+"description": "User Model"
+}
+}
+}
